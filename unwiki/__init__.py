@@ -16,14 +16,15 @@
 
 import re
 
-RE = re.compile(r"""\[{2}(File|Category):[\s\S]+\]{2}|
-        [\s\w#()\-,]+\||
-        (\[{2}|\]{2})|
+RE = re.compile(r"""\[\[(File|Category):[\s\S]+\]\]|
+        \[\[[^|^\]]+\||
+        \[\[|
+        \]\]|
         \'{2,5}|
         (<s>|<!--)[\s\S]+(</s>|-->)|
         {{[\s\S\n]+?}}|
         <ref>[\s\S]+</ref>|
-        ^={1,6}|={1,6}$""", re.VERBOSE)
+        ={1,6}""", re.VERBOSE)
 
 
 def loads(wiki, compress_spaces=None):

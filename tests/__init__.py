@@ -35,6 +35,7 @@ class unwikiTestCase(unittest.TestCase):
 
     def testHeadline(self):
         self.assertEqual(unwiki.loads('=== Head ==='), ' Head ')
+        self.assertEqual(unwiki.loads('=== Head ===\nText'), ' Head \nText')
 
     def testCompressSpaces(self):
         self.assertEqual(unwiki.loads('removing this {{thing}} leaves extra spaces', True), 'removing this leaves extra spaces')
